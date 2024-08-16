@@ -1,0 +1,36 @@
+https://leetcode.com/problems/lemonade-change/description/?envType=daily-question&envId=2024-08-15
+Solution:
+
+class Solution(object):
+    def lemonadeChange(self, bills):
+        """
+        :type bills: List[int]
+        :rtype: bool
+        """
+        if bills[0]!=5:
+            return False
+        fivedol=0
+        tendol=0
+        for i in bills:
+            if i==5:
+                fivedol+=1
+            elif i==10:
+                if fivedol>0:
+                    fivedol-=1
+                else:
+                    return False
+                tendol+=1
+            else:
+                if fivedol>0 and tendol>0:
+                    fivedol-=1
+                    tendol-=1
+                elif fivedol>2:
+                    fivedol-=3
+                else:
+                    return False
+        return True
+
+
+
+
+        
